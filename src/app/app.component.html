@@ -1,34 +1,48 @@
+<input *ngIf="showButton" [(ngModel)]="name" placeholder="name">
 <div class="f1-lights">
-  <div class="back-board"></div>
-  <div class="light-strip on">
+  <div  class="back-board"></div>
+  <div  class="{{ array[0]}}" >
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
   </div>
-  <div class="light-strip">
+  <div class="{{array[1]}}" >
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
   </div>
-  <div class="light-strip">
+  <div class="{{array[2]}}" >
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
   </div>
-  <div class="light-strip">
+  <div  class="{{array[3]}}" >
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
   </div>
-  <div class="light-strip">
+  <div class="{{array[4]}}" >
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
     <div class="light"></div>
   </div>
 </div>
-<button (click)="start()" [disabled]="switch">start</button>
+<button (click)="start()" *ngIf="showButton">start</button>
+<button (click)="endDrive()" *ngIf="drive">drive</button>
+
+<div *ngIf="showTimeTrying">
+  <p>{{name+ "=" + finaltime | date : 's:SSS'}}</p>
+</div>
+
+<div *ngIf="showLeaderboard">
+  <button (click)="restartDrive()">Restart</button>
+  <p *ngFor="let entry of timeArray; index as i ">
+    {{"Rank: "+ i+1 + " Name: "+entry.name + "Time: " + entry.time}}
+  </p>
+</div>
+

@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-f1-reaction-test';
+  switch: boolean = false;
+
+  start() {
+    this.switch = true;
+
+  }
 }
